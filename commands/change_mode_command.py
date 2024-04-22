@@ -1,6 +1,7 @@
 from commands.command import Command
 from state.global_state import GlobalState
 from errors import TooFewArguments, TooManyArguments, BadCommandUse
+from commands.save_command import SaveCommand
 
 
 class ChangeModeCommand(Command):
@@ -24,7 +25,14 @@ class ChangeModeCommand(Command):
             raise BadCommandUse("cm <normal/database_path>")
 
         self.mode = args[0]
-        print(f"Mode changed to <{self.mode}>")
 
     def execute(self):
+        if GlobalState.unsaved_changes:
+            save = input("Do you want to save changes? (y/n): ")
+            while save not in ["y", "n"]:
+                save = input("Do you want to save changes? (y/n): ")
+            if save == "y":
+                save = SaveCommand([])
+                save.execute()
         GlobalState.enter_db_mode(self.mode)
+        print(f"Mode changed to <{self.mode}>")
