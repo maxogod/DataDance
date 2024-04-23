@@ -1,6 +1,6 @@
 from commands.command import Command
 from process_cmd import process_cmd
-from defs import HELP_COMMANDS
+from state.global_state import GlobalState
 import utils
 
 
@@ -8,7 +8,7 @@ def main():
     cmd = ""
     while True:
         try:
-            cmd = input("$ ")
+            cmd = input(GlobalState.prompt)
         except EOFError:
             break
 
@@ -18,14 +18,6 @@ def main():
         if cmd == "exit":
             utils.graceful_exit()
             break
-
-        if cmd == "clear":
-            utils.clear_screen()
-            continue
-
-        if cmd in HELP_COMMANDS:
-            utils.print_help()
-            continue
 
         try:
             command: Command = process_cmd(cmd)

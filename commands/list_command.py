@@ -3,16 +3,14 @@ from state.global_state import GlobalState
 from errors import TooManyArguments, TooFewArguments, BadCommandUse
 
 
-class RemoveCommand(Command):
+class ListCommand(Command):
     """
-    removes database
+    lists databases
     """
 
     def __init__(self, args: list[str]):
-        if len(args) < 1:
-            raise TooFewArguments("rm <database_path>")
-        if len(args) > 1:
-            raise TooManyArguments("rm <database_path>")
+        if args:
+            raise TooManyArguments("ls")
 
     def execute(self):
         pass

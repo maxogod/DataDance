@@ -9,7 +9,7 @@ class SaveCommand(Command):
     """
 
     def __init__(self, args: list[str]):
-        if len(args) > 1:
+        if args:
             raise TooManyArguments("save")
 
     def execute(self):

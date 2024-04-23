@@ -1,15 +1,18 @@
 # ~~~~~~~~~~ CONSTANT VARIABLES DEFINITION ~~~~~~~~~~ #
 from enum import Enum
 
-HELP_COMMANDS = ["help", "h", "?", "-h"]
-
 NORMAL_MODE_STR = "normal"
 
 
 class CommandActions(Enum):
     CHANGE_MODE = "cm"
-    SAVE = "save"
+    IMPORT = "import"
     SQL = "sql"
+    SAVE = "save"
+    LIST = "ls"
+    REMOVE = "rm"
+    CLEAR = "clear"
+    HELP = "help"
 
 
 class Mode(Enum):
