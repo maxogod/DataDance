@@ -3,6 +3,8 @@ from enum import Enum
 
 NORMAL_MODE_STR = "normal"
 
+DB_EXTENSIONS = ["db", "sqlite", "sqlite3", "csv"]
+
 
 class CommandActions(Enum):
     CHANGE_MODE = "cm"

@@ -1,5 +1,5 @@
 from state.global_state import GlobalState
-from commands.save_command import SaveCommand
+from defs import *
 
 
 supported_commands = {
@@ -19,3 +19,7 @@ supported_commands = {
 def graceful_exit():
     GlobalState.ask_for_save_confirmation()
     GlobalState.enter_normal_mode()
+
+
+def is_db_file(file: str) -> bool:
+    return file.split(".")[-1] in DB_EXTENSIONS

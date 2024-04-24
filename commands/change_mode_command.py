@@ -1,7 +1,7 @@
 from commands.command import Command
 from state.global_state import GlobalState
 from errors import TooFewArguments, TooManyArguments, BadCommandUse
-from commands.save_command import SaveCommand
+import utils
 
 
 class ChangeModeCommand(Command):
@@ -23,6 +23,13 @@ class ChangeModeCommand(Command):
 
         if not args[0]:
             raise BadCommandUse("cm <normal/database_path>")
+
+        if args[0].split(".")[-1] == "csv":
+            raise BadCommandUse(
+                "To use csv files first convert them to db using the `import` command")
+        elif not utils.is_db_file(args[0]):
+            raise BadCommandUse(
+                f"The file `{args[0]}` isn't a database")
 
         self.mode = args[0]
 
