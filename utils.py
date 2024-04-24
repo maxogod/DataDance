@@ -17,12 +17,5 @@ supported_commands = {
 
 
 def graceful_exit():
-    if GlobalState.unsaved_changes:
-        save = input("Do you want to save changes? (y/n): ")
-        while save not in ["y", "n"]:
-            save = input("Do you want to save changes? (y/n): ")
-        if save == "y":
-            save = SaveCommand([])
-            save.execute()
-
+    GlobalState.ask_for_save_confirmation()
     GlobalState.enter_normal_mode()

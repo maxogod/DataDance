@@ -27,12 +27,5 @@ class ChangeModeCommand(Command):
         self.mode = args[0]
 
     def execute(self):
-        if GlobalState.unsaved_changes:
-            save = input("Do you want to save changes? (y/n): ")
-            while save not in ["y", "n"]:
-                save = input("Do you want to save changes? (y/n): ")
-            if save == "y":
-                save = SaveCommand([])
-                save.execute()
         GlobalState.enter_db_mode(self.mode)
         print(f"Mode changed to <{self.mode}>")
