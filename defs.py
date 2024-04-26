@@ -5,6 +5,7 @@ NORMAL_MODE_STR = "normal"
 
 DB_EXTENSIONS = ["db", "sqlite", "sqlite3", "csv"]
 
+EXIT_COMMANDS = ["exit", "quit", "q"]
 
 class CommandActions(Enum):
     CHANGE_MODE = "cm"

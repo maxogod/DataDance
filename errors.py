@@ -29,3 +29,10 @@ class TooManyArguments(Exception):
     def __init__(self, cmd):
         self.cmd = cmd
         super().__init__(f"Too many arguments for command: {cmd}")
+
+
+class SqlInjection(Exception):
+    """Exception raised when a command contains SQL injection."""
+
+    def __init__(self):
+        super().__init__("SQL injection detected")

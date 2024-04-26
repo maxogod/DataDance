@@ -1,6 +1,7 @@
 from commands.command import Command
 from process_cmd import process_cmd
 from state.global_state import GlobalState
+from defs import EXIT_COMMANDS
 import utils
 
 
@@ -15,7 +16,7 @@ def main():
         if not cmd:
             continue
 
-        if cmd == "exit":
+        if cmd in EXIT_COMMANDS:
             utils.graceful_exit()
             break
 
